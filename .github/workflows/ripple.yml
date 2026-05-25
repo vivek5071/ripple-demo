@@ -1,0 +1,22 @@
+name: Ripple
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  ripple:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: vivek5071/ripple@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          mode: advisory

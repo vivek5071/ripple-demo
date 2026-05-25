@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/vivek5071/ripple/main/ripple.schema.json
+paths:
+  'src/api/**': vivek5071
+  'src/db/**': vivek5071
+  'src/services/**': vivek5071
+  'src/lib/**': vivek5071
