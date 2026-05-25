@@ -15,12 +15,18 @@ export interface CreateUserInput {
   password: string
 }
 
-export async function getUserById(id: string): Promise<User | null> {
-  return db.query('SELECT id, email, name, created_at FROM users WHERE id = $1', [id])
+export async function getUserById(id: string, options?: { includeDeleted?: boolean }): Promise<User | null> {
+  const sql = options?.includeDeleted
+    ? 'SELECT id, email, name, role, created_at FROM users WHERE id = $1'
+    : 'SELECT id, email, name, role, created_at FROM users WHERE id = $1 AND deleted_at IS NULL'
+  return db.query(sql, [id])
 }
 
-export async function getUserByEmail(email: string): Promise<User | null> {
-  return db.query('SELECT id, email, name, created_at FROM users WHERE email = $1', [email])
+export async function getUserByEmail(email: string, options?: { includeDeleted?: boolean }): Promise<User | null> {
+  const sql = options?.includeDeleted
+    ? 'SELECT id, email, name, role, created_at FROM users WHERE email = $1'
+    : 'SELECT id, email, name, role, created_at FROM users WHERE email = $1 AND deleted_at IS NULL'
+  return db.query(sql, [email])
 }
 
 export async function createUser(input: CreateUserInput): Promise<User> {
