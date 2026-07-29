@@ -4,3 +4,9 @@ paths:
   'src/db/**': demo-bob
   'src/services/**': demo-carol
   'src/lib/**': demo-alice
+
+ai-review:
+  enabled: true
+  api-url: https://api.groq.com/openai
+  model: llama-3.3-70b-versatile
+  focus: all

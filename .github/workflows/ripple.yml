@@ -19,4 +19,5 @@ jobs:
       - uses: vivek5071/ripple@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          ai-api-key: ${{ secrets.AI_API_KEY }}
           mode: advisory
