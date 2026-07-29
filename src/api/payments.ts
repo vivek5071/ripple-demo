@@ -43,10 +43,10 @@ export async function listPayments(
     [userId, offset, limit]
   )
 
-  const hasMore = rows.length >= limit
+  const hasMoreRows = rows.length >= limit
   return {
     payments: rows,
-    nextCursor: hasMore ? rows[0].id : null,
+    nextCursor: hasMoreRows ? rows[0].id : null,
   }
 }
 
